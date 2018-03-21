@@ -1,0 +1,64 @@
+@import './base.scss';
+body,
+html,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+.silde {
+    width: 400px;
+    height: 100%;
+    padding: 20px 20px;
+    background: $bg;
+    .re_title {
+        color: $title_cl;
+        font-size: $title_fz;
+        font-weight: bolder;
+        dd {
+            font-size: $tl_dd_fz;
+        }
+        .clear{
+            color: #fff;
+            font-size: 14px;
+        }
+    }
+    .re_con {
+        width: 100%;
+        height: 100%;
+        li {
+            list-style: none;
+            font-size: $con_fz;
+            color: $con_cl;
+            dl {
+                padding-top: 20px;
+                dt {
+                    .number {
+                        border-radius: 20px;
+                        padding: 0 5px;
+                        height: 20px;
+                        font-size: 14px;
+                        background: #516a76;
+                        line-height: 1.4;
+                    }
+                }
+                dd {
+                    padding: 10px 0 0 20px;
+                    li {
+                        color: $title_cl;
+                        font-size: $dd_li_fz;
+                        line-height: 2;
+                        .number {
+                            padding: 0 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .icon-xialajiantou {
+        font-size: 12px;
+        padding-left: 20px;
+        font-weight: bolder
+    }
+}

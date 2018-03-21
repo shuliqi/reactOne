@@ -1,0 +1,26 @@
+/**
+ * [onePXBefore 移动端模拟1px上线条]
+ * @param  {[string]} $color  [eg：'#ccc'，边框颜色值]
+ */
+
+@mixin onePXBefore ($color) {
+  position: relative;
+  &:before {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: $color;
+    transform: scaleY(.5);
+
+    content: "";
+  }
+}
+
+// eg；
+/*  div{
+  @include onePXBefore(#ccc);
+} */

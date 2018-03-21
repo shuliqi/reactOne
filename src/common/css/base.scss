@@ -1,0 +1,30 @@
+@import '../css/mixin/_clearfix.scss';
+@import '../css/mixin/_checkbox-align.scss';
+@import '../css/mixin/_text_overflow.scss';
+@import '../css/_normalize.scss';
+@import '../css/_var.scss';
+@import '../font/iconfont.css';
+
+/**
+    * 复选框样式
+    */
+
+[type="checkbox"] {
+    width: 17px;
+    height: 35px;
+    opacity: 0;
+    position: absolute;
+}
+
+[type="checkbox"]~i {
+    &:before {
+        content: "\e667";
+    }
+}
+
+[type="checkbox"]:checked~i {
+    &:before {
+        color: rgb(255, 255, 255);
+        content: "\e665";
+    }
+}
