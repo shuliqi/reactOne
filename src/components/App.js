@@ -10,10 +10,9 @@ class App extends Component {
     };
   }
   /**
-   * 清楚事件
-   */
+   *  清除函数
+  */
   clear(){
-    console.log("sdhsudg")
     let jobs = this.state.jobs
     for (let i = 0, len = jobs.length;  i < len ; i++) {
       jobs[i].checked = false
@@ -24,10 +23,14 @@ class App extends Component {
     this.setState({ jobs: [] },function () { 
       this.setState({ jobs: jobs })
     });
-    
   }
 
-  select(ParentIndex){
+
+  /**
+   * [ParentSelect] 父级选择事件
+   * @param { Number } ParentIndex 当前操作的父级的下标
+  */
+  ParentSelect(ParentIndex){
     let jobState = this.state.jobs
     
     for (let i = 0, len = jobState[ParentIndex].JobPositions.length; i < len; i++) {
@@ -36,12 +39,17 @@ class App extends Component {
     }
     jobState[ParentIndex].checked = !jobState[ParentIndex].checked 
     this.setState({ jobs: [] }, () => {
-      this.setState({ jobs: jobState }, () => {
-          console.log(this.state.jobs)
-      })
+      this.setState({ jobs: jobState }, () => {})
     })
     
   }
+
+  /**
+   * [UpdataState]  子组件操作,父级组件状态更新事件
+   * @param {  Number }  ParentIndex 操作的子组件的父级下标
+   * @param {  Array  }  childrenState 子组件的状态
+   * @param { booleam }  booleam 当前操作的父级的下标
+  */
   UpdataState(ParentIndex,childrenState,booleam){
     let jobState = this.state.jobs
     jobState[ParentIndex].checked = booleam
@@ -52,7 +60,11 @@ class App extends Component {
       })
     })
   }
-  
+
+
+  /**
+   * react生命周期：在第一次渲染后调用
+   */
   componentDidMount () {
     axios({
       method: 'post',
@@ -63,11 +75,10 @@ class App extends Component {
       }
     }).then(res => {
       let posts = res.data.data
-      this.setState({ jobs: posts }, function (param) {
-        // console.log(this.state.data)
-      });
+      this.setState({ jobs: posts }, function (param) {});
     })
   }
+
   render() {
    var  _this = this
     let reactid = 0;
@@ -84,7 +95,7 @@ class App extends Component {
                     <li key={ reactid++}>
                         <dl>
                           <dt>
-                            <input type="checkbox" defaultChecked={item.checked} onChange={() => { _this.select(index)}} />
+                            <input type="checkbox" defaultChecked={item.checked} onChange={() => { _this.ParentSelect(index)}} />
                             <i className="iconfont"> </i>
                             <span>{ item.department }</span>
                             <span className="iconfont icon-xialajiantou" > </span>

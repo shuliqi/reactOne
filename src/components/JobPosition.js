@@ -8,17 +8,21 @@ class Content extends Component {
       ParentIndex: this.props.ParentIndex
     };
   }
+
+
+  /**
+   * [changeState] 子组件选择状态改变
+   * @param { Number } index 当前操作的子组件的下标
+  */
   changeState(index){
     let positions = this.state.Positions
     positions[index].checked = !positions[index].checked
-  
     this.setState({ Positions: positions},() =>{
       let flag = []
       for (let i = 0, len = this.state.Positions.length; i < len; i++) {
         flag[i] = this.state.Positions[i].checked?true:false
       }
       if(flag.indexOf(true) === -1){
-       
         this.props.UpdataState(this.state.ParentIndex, this.state.Positions,false)
       }else{
         this.props.UpdataState(this.state.ParentIndex, this.state.Positions, true)
@@ -26,6 +30,7 @@ class Content extends Component {
     })
 
   }
+  
   render(props){
     var reactid = 0
     return (
